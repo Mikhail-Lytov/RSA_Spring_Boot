@@ -17,6 +17,18 @@ public class Post { //модель, создаёт табличку данных
     private Long id;
     private String path;
     private String text_in_file;
+
     private BigInteger open_exhibitor, close_exhibitor, derivative;
+
+    public Post(String path, String text_in_file, BigInteger open_exhibitor, BigInteger close_exhibitor, BigInteger derivative) {
+        this.path = path;
+        this.text_in_file = text_in_file;
+        this.open_exhibitor = open_exhibitor;
+        this.close_exhibitor = close_exhibitor;
+        this.derivative = derivative;
+    }
+
+    public Post() {
+    }
 
 }

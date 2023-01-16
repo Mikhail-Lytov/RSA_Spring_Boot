@@ -24,9 +24,8 @@ public class RSAController {
 
 
     @PostMapping("/signarutefile")
-    public String signaruteFile(@ModelAttribute ModelSignature dataFile){
-
-        return "";
+    public ModelSignature signaruteFile(@RequestBody ModelSignature dataFile){
+        return rsaService.encryptionFile(dataFile);
     }
     /*@GetMapping("/RSA")
     public String blogmain(Model model){

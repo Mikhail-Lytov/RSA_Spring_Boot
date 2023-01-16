@@ -21,27 +21,30 @@ import java.math.BigInteger;
 @AllArgsConstructor
 public class RSAService {
 
-    public String encryptionFile(ModelSignature modelSignature){
-        SHA sha_ = new SHA();
+    private final RSARepository repository;
+    public ModelSignature encryptionFile(ModelSignature modelSignature){
+        String DataFiles;
+        SHA sha = new SHA();
         GenerationKey key = new GenerationKey();
-        sha_.setText(text_string);
-        BigInteger sha_int = sha_.getInteger();
-
-        //key.key_generation();
+        System.out.println(modelSignature.getDataFile());
+        sha.setText(modelSignature.getDataFile());
+        BigInteger sha_int = sha.getInteger();
         BigInteger close_exhibitor = key.getClose_exhibitor();
-
         BigInteger derivative = key.getDerivative();
-        System.out.println(close_exhibitor);
-        System.out.println(derivative);
         if(sha_int.compareTo(derivative) <= -1){
             BigInteger signature = sha_int.modPow(close_exhibitor,derivative);
-            //FileWriter file_signature = new FileWriter(name_file_txt);
-            //file_signature.write(line_sum + "\n" + signature.toString());
-            //file_signature.close();
+            //repository.save(modelSignature.getPathFile(), modelSignature.getDataFile(), key.getOpen_exhibitor(), key.getClose_exhibitor(), key.getDerivative());
+
+            DataFiles = modelSignature.getDataFile() + "\n" + signature.toString();
+            ModelSignature modelSignatureResult = new ModelSignature();
+            modelSignatureResult.setPathFile(modelSignature.getPathFile());
+            modelSignatureResult.setDataFile(DataFiles);
+
+            return modelSignatureResult;
 
         }else{System.out.println("Ключ мал");}
 
-        return "";
+        return modelSignature;
     }
 
    /* public FileSystemResource encryptionFile(MultipartFile file) throws IOException {
