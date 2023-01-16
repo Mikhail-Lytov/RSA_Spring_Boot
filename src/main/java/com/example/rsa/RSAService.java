@@ -42,12 +42,12 @@ public class RSAService {
             //file_signature.close();
 
         }else{System.out.println("Ключ мал");}
-        File file1 = new File("//home//noisy_cricket//Документы//test_file//1.txt");
+        File file1 = new File("C:\\Users\\Lytov\\Desktop\\backend\\тест файлы\\2.txt");
         file1.createNewFile();
         FileWriter fileWriter = new FileWriter(file1);
         fileWriter.write("Привет");
         fileWriter.close();
-        return new FileSystemResource("//home//noisy_cricket//Документы//test_file//1.txt");
+        return new FileSystemResource("C:\\Users\\Lytov\\Desktop\\backend\\тест файлы\\2.txt");
 
     }
     //https://www.youtube.com/watch?v=oGK2KufvxM0
