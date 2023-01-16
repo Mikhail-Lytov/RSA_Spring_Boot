@@ -2,6 +2,8 @@ package com.example.rsa;
 
 
 
+import com.example.rsa.hashing.SHA;
+import com.example.rsa.key_generation.GenerationKey;
 import com.example.rsa.models.ModelSignature;
 import com.example.rsa.repo.PostRepository;
 import lombok.AllArgsConstructor;
@@ -20,6 +22,25 @@ import java.math.BigInteger;
 public class RSAService {
 
     public String encryptionFile(ModelSignature modelSignature){
+        SHA sha_ = new SHA();
+        GenerationKey key = new GenerationKey();
+        sha_.setText(text_string);
+        BigInteger sha_int = sha_.getInteger();
+
+        //key.key_generation();
+        BigInteger close_exhibitor = key.getClose_exhibitor();
+
+        BigInteger derivative = key.getDerivative();
+        System.out.println(close_exhibitor);
+        System.out.println(derivative);
+        if(sha_int.compareTo(derivative) <= -1){
+            BigInteger signature = sha_int.modPow(close_exhibitor,derivative);
+            //FileWriter file_signature = new FileWriter(name_file_txt);
+            //file_signature.write(line_sum + "\n" + signature.toString());
+            //file_signature.close();
+
+        }else{System.out.println("Ключ мал");}
+
         return "";
     }
 
