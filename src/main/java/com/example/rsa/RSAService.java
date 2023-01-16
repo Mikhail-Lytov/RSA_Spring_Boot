@@ -1,9 +1,11 @@
 package com.example.rsa;
 
 
-import com.example.rsa.hashing.SHA;
-import com.example.rsa.key.GenerationKey;
+
+import com.example.rsa.models.ModelSignature;
+import com.example.rsa.repo.PostRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,7 +19,11 @@ import java.math.BigInteger;
 @AllArgsConstructor
 public class RSAService {
 
-    public FileSystemResource encryptionFile(MultipartFile file) throws IOException {
+    public String encryptionFile(ModelSignature modelSignature){
+        return "";
+    }
+
+   /* public FileSystemResource encryptionFile(MultipartFile file) throws IOException {
         System.out.println("Вошел");
         SHA sha_ = new SHA();
         System.out.println("вышел");
@@ -50,7 +56,7 @@ public class RSAService {
         return new FileSystemResource("C:\\Users\\Lytov\\Desktop\\backend\\тест файлы\\2.txt");
 
     }
-    //https://www.youtube.com/watch?v=oGK2KufvxM0
+   */ //https://www.youtube.com/watch?v=oGK2KufvxM0
 
 
 }

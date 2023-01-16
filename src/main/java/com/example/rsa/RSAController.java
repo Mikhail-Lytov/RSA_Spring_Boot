@@ -1,7 +1,7 @@
 package com.example.rsa;
 
-import com.example.rsa.model.DataFile;
-import com.example.rsa.model.Post;
+import com.example.rsa.models.ModelSignature;
+import com.example.rsa.models.Post;
 import com.example.rsa.repo.PostRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,10 +19,16 @@ import java.io.IOException;
 @AllArgsConstructor
 public class RSAController {
     private final RSAService rsaService;
-    @Autowired // Создание переменой,ссылающие на репозиторий
-    private PostRepository postRepository;
 
-    @GetMapping("/RSA")
+
+
+
+    @PostMapping("/signarutefile")
+    public String signaruteFile(@ModelAttribute ModelSignature dataFile){
+
+        return "";
+    }
+    /*@GetMapping("/RSA")
     public String blogmain(Model model){
         Iterable<Post> posts = postRepository.findAll();       //Массив данных из таблицы
         model.addAttribute("posts", posts);
@@ -34,11 +40,11 @@ public class RSAController {
         Post post  = new Post();
         postRepository.save(post);
         return "";
-    }
+    }*/
 
-    @PostMapping("/signarutefile")
+   /* @PostMapping("/signarutefile")
     public FileSystemResource signatureFile(@RequestBody MultipartFile file, @ModelAttribute DataFile text) throws IOException {
         System.out.println(file.getOriginalFilename());
         return rsaService.encryptionFile(file);
-    }
+    }*/
 }
