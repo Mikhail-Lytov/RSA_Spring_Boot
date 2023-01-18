@@ -1,6 +1,7 @@
 package com.example.rsa;
 
 import com.example.rsa.models.ModelSignature;
+import com.example.rsa.models.ModelSignatureUser;
 import com.example.rsa.models.Post;
 import com.example.rsa.repo.PostRepository;
 import lombok.AllArgsConstructor;
@@ -24,7 +25,7 @@ public class RSAController {
 
 
     @PostMapping("/signarutefile")
-    public ModelSignature signaruteFile(@RequestBody ModelSignature dataFile){
+    public ModelSignatureUser signaruteFile(@RequestBody ModelSignature dataFile){
         return rsaService.encryptionFile(dataFile);
     }
     /*@GetMapping("/RSA")
