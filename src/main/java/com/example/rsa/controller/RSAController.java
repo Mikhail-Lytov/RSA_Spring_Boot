@@ -1,21 +1,12 @@
-package com.example.rsa;
+package com.example.rsa.controller;
 
-import com.example.rsa.models.ModelSignature;
-import com.example.rsa.models.ModelSignatureUser;
-import com.example.rsa.models.OpenKey;
-import com.example.rsa.models.Post;
-import com.example.rsa.repo.PostRepository;
+import com.example.rsa.model.ModelSignature;
+import com.example.rsa.model.ModelSignatureUser;
+import com.example.rsa.model.OpenKey;
+import com.example.rsa.service.RSAService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.math.BigDecimal;
 
 @Slf4j
 @RestController

@@ -1,4 +1,4 @@
-package com.example.rsa.hashing;
+package com.example.rsa.utils.hashing;
 
 
 import lombok.AllArgsConstructor;

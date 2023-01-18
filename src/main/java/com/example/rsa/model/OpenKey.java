@@ -1,4 +1,4 @@
-package com.example.rsa.models;
+package com.example.rsa.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

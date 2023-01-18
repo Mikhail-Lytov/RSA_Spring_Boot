@@ -1,24 +1,21 @@
-package com.example.rsa;
+package com.example.rsa.service;
 
-
-
-import com.example.rsa.hashing.SHA;
-import com.example.rsa.key_generation.GenerationKey;
-import com.example.rsa.models.ModelSignature;
-import com.example.rsa.models.ModelSignatureUser;
-import com.example.rsa.models.OpenKey;
+import com.example.rsa.model.ModelSignature;
+import com.example.rsa.model.ModelSignatureUser;
+import com.example.rsa.model.OpenKey;
+import com.example.rsa.repository.RSARepository;
+import com.example.rsa.utils.hashing.SHA;
+import com.example.rsa.utils.key_generation.GenerationKey;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-
 import java.math.BigInteger;
-
 @Service
 @AllArgsConstructor
-public class RSAService {
-
+public class RSAServiceImpl implements RSAService{
     private final RSARepository repository;
-    public ModelSignatureUser encryptionFile(ModelSignature modelSignature){
+    @Override
+    public ModelSignatureUser encryptionFile(ModelSignature modelSignature) {
         String DataFiles;
         SHA sha = new SHA();
         GenerationKey key = new GenerationKey();
@@ -42,12 +39,11 @@ public class RSAService {
         return new ModelSignatureUser();
     }
 
-    public OpenKey OpenKey(Long id){
+    @Override
+    public OpenKey OpenKey(Long id) {
         BigInteger open_exhibitor = new BigInteger(repository.getOpenExhibitor(id));
         BigInteger derivative = new BigInteger((repository.getDerivative(id)));
         OpenKey openKey = new OpenKey(open_exhibitor,derivative);
         return openKey;
     }
-
-
 }

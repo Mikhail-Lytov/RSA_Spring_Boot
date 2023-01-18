@@ -1,9 +1,7 @@
-package com.example.rsa.key_generation;
+package com.example.rsa.utils.key_generation;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigInteger;
 import java.util.Random;
