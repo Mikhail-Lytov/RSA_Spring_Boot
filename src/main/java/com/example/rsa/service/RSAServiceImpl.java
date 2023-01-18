@@ -10,12 +10,17 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
+import org.apache.commons.codec.binary.Base64;
+
 @Service
 @AllArgsConstructor
 public class RSAServiceImpl implements RSAService{
     private final RSARepository repository;
     @Override
     public ModelSignatureUser encryptionFile(ModelSignature modelSignature) {
+        byte[] bite_base64 = Base64.decodeBase64(modelSignature.getDataFile());
+        modelSignature.setDataFile(new String(bite_base64));
+
         String DataFiles;
         SHA sha = new SHA();
         GenerationKey key = new GenerationKey();
@@ -25,9 +30,11 @@ public class RSAServiceImpl implements RSAService{
         BigInteger derivative = key.getDerivative();
         if(sha_int.compareTo(derivative) <= -1){
             BigInteger signature = sha_int.modPow(close_exhibitor,derivative);
-            DataFiles = modelSignature.getDataFile() + "\n" + signature.toString();
-            Long ID = repository.save(modelSignature.getPathFile(), DataFiles, key.getOpen_exhibitor(), key.getClose_exhibitor(), key.getDerivative());
+            //String signature_base_64 = Base64.encodeBase64String(("\n" + signature.toString()).getBytes());
 
+            Long ID = repository.save(modelSignature.getPathFile(), modelSignature.getDataFile(), key.getOpen_exhibitor(), key.getClose_exhibitor(), key.getDerivative());
+
+            DataFiles = Base64.encodeBase64String((modelSignature.getDataFile() + "\n" + signature).getBytes());
             ModelSignatureUser modelSignatureUser = new ModelSignatureUser();
             modelSignatureUser.setPathFile(modelSignature.getPathFile());
             modelSignatureUser.setDataFile(DataFiles);
