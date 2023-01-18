@@ -2,6 +2,7 @@ package com.example.rsa;
 
 import com.example.rsa.models.ModelSignature;
 import com.example.rsa.models.ModelSignatureUser;
+import com.example.rsa.models.OpenKey;
 import com.example.rsa.models.Post;
 import com.example.rsa.repo.PostRepository;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 @Slf4j
 @RestController
@@ -27,6 +29,10 @@ public class RSAController {
     @PostMapping("/signarutefile")
     public ModelSignatureUser signaruteFile(@RequestBody ModelSignature dataFile){
         return rsaService.encryptionFile(dataFile);
+    }
+    @GetMapping("/open_key/{id}")
+    public OpenKey getOpenKey(@PathVariable(value = "id") long id){
+        return rsaService.OpenKey(id);
     }
     /*@GetMapping("/RSA")
     public String blogmain(Model model){

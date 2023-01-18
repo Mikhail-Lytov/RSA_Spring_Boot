@@ -1,5 +1,6 @@
 package com.example.rsa;
 
+import com.example.rsa.models.OpenKey;
 import com.example.rsa.models.Post;
 import com.example.rsa.repo.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,17 @@ public class RSARepository {
         postRepository.save(post);
         return post.getId();
 
+    }
+    public String getOpenExhibitor(long id){
+        Post post = postRepository.findById(id).orElseThrow();
+        String open_exhibitor = post.getOpen_exhibitor();
+        return open_exhibitor;
+    }
+
+    public String getDerivative(long id){
+        Post post = postRepository.findById(id).orElseThrow();
+        String derivative = post.getDerivative();
+        return derivative;
     }
 
 

@@ -6,6 +6,7 @@ import com.example.rsa.hashing.SHA;
 import com.example.rsa.key_generation.GenerationKey;
 import com.example.rsa.models.ModelSignature;
 import com.example.rsa.models.ModelSignatureUser;
+import com.example.rsa.models.OpenKey;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +40,13 @@ public class RSAService {
         }else{System.out.println("Ключ мал");}
 
         return new ModelSignatureUser();
+    }
+
+    public OpenKey OpenKey(Long id){
+        BigInteger open_exhibitor = new BigInteger(repository.getOpenExhibitor(id));
+        BigInteger derivative = new BigInteger((repository.getDerivative(id)));
+        OpenKey openKey = new OpenKey(open_exhibitor,derivative);
+        return openKey;
     }
 
 
