@@ -1,0 +1,7 @@
+POST http://localhost:8080/signarutefile
+Content-Type: application/json
+
+{
+  "pathFile":"C:\\Users\\Lytov\\Desktop\\backend\\тест файлы\\1.txt",
+  "dataFile":"aGVsbG93Cm15IG5hbWVzINCc0LjRiNCwCg\u003d\u003d"
+}
